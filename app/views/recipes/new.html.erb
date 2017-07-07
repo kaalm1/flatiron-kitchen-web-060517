@@ -1,0 +1,11 @@
+<%= form_for @recipe do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<% if !Ingredient.all.nil? %>
+<% Ingredient.all.each do |ingredient| -%>
+  <%= ingredient.name %>
+  <%= f.check_box :ingredients, {:multiple => true, :id => ingredient.name, :value => ingredient.id},ingredient.id,nil %>
+<% end %>
+<% end %>
+<%= f.submit%>
+<% end %>
